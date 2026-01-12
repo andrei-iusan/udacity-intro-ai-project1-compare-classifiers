@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 # */AIPND-revision/intropyproject-classify-pet-images/get_pet_labels.py
 #                                                                             
-# PROGRAMMER: 
-# DATE CREATED:                                  
+# PROGRAMMER: Andrei Iusan
+# DATE CREATED: 2026-01-12                               
 # REVISED DATE: 
 # PURPOSE: Create the function get_pet_labels that creates the pet labels from 
 #          the image's filename. This function inputs: 
@@ -17,12 +17,26 @@
 #
 ##
 # Imports python modules
+from fileinput import filename
 from os import listdir
 
 # TODO 2: Define get_pet_labels function below please be certain to replace None
 #       in the return statement with results_dic dictionary that you create 
 #       with this function
 # 
+
+def is_image_file(filename):
+    """Checks if the filename has a valid image file extension."""
+    valid_extensions = ('.jpg', '.jpeg', '.png', '.bmp', '.gif')
+    return filename.lower().endswith(valid_extensions)
+
+def get_image_name_parts(filename):
+    """Extracts the dog breed and ID from the filename."""
+    name_parts = filename.rsplit('_', 1)
+    pet_label = name_parts[0].replace('_', ' ').lower().strip()
+    id_part = name_parts[1].split('.')[0] if len(name_parts) > 1 else ''
+    return pet_label, id_part
+
 def get_pet_labels(image_dir):
     """
     Creates a dictionary of pet labels (results_dic) based upon the filenames 
@@ -40,6 +54,12 @@ def get_pet_labels(image_dir):
       List. The list contains for following item:
          index 0 = pet image label (string)
     """
-    # Replace None with the results_dic dictionary that you created with this
-    # function
-    return None
+    # the function get_image_name_parts extracts the breed and ID from the filename
+    # ID is not used in this function but might be useful later
+    results_dic = dict()
+    filename_list = listdir(image_dir)
+    for filename in filename_list:
+        if is_image_file(filename):
+            pet_label, image_id = get_image_name_parts(filename)
+            results_dic[filename] = [pet_label]
+    return results_dic
