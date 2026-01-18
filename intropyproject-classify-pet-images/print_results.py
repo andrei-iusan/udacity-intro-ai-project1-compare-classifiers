@@ -65,19 +65,19 @@ def print_results(results_dic, results_stats_dic, model,
     # Print model architecture used
     print("\nModel used: {}".format(model))
 
-    # Ptint data statistics
+    # Print data statistics
+    print("\nData Statistics:")
     print("Number of Images: {}".format(results_stats_dic['n_images']))
     print("Number of Dog Images: {}".format(results_stats_dic['n_dogs_img']))
     print("Number of 'Not-a' Dog Images: {}".format(results_stats_dic['n_notdogs_img']))
 
     # Print results statistics
     print("\nStatistics:")
-    for key, value in results_stats_dic.items():
-        if key.startswith("pct"):
-            print("  {}: {:.2f}%".format(key, value))
-        else:
-            print("  {}: {}".format(key, value))
-
+    print("  % Correct Dogs: {:.2f}%".format(results_stats_dic['pct_correct_dogs']))
+    print("  % Correct 'Not-a' Dog: {:.2f}%".format(results_stats_dic['pct_correct_notdogs']))
+    print("  % Correct Breeds: {:.2f}%".format(results_stats_dic['pct_correct_breed']))
+    print("  % Correct Matches: {:.2f}%".format(results_stats_dic['pct_match']))
+    
     # Print incorrectly classified dogs if requested
     if print_incorrect_dogs:
         print("\nIncorrectly Classified Dogs:")
