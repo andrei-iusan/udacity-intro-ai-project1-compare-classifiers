@@ -72,7 +72,8 @@ def adjust_results4_isadog(results_dic, dogfile):
     with open(dogfile, "r") as f:
         for line in f:
             dog_name = line.strip()
-            dognames_dic.add(dog_name)
+            for dog_name in dog_name.split(","):
+                dognames_dic.add(dog_name.strip())
     # iterating through results_dic to adjust for is-a-dog
     for key in results_dic:
         pet_label = results_dic[key][0]
