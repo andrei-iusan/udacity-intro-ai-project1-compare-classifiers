@@ -95,9 +95,9 @@ def calculates_results_stats(results_dic):
     # Calculate percentages
     if len(results_dic) > 0:
         pct_match = (results_stats_dic['n_match'] / len(results_dic)) * 100
-        pct_correct_dogs = (results_stats_dic['n_correct_dogs'] / len(results_dic)) * 100
-        pct_correct_breed = (results_stats_dic['n_correct_breed'] / len(results_dic)) * 100
-        pct_correct_notdogs = (results_stats_dic['n_correct_notdogs'] / len(results_dic)) * 100
+        pct_correct_dogs = (results_stats_dic['n_correct_dogs'] / results_stats_dic['n_dogs_img']) * 100
+        pct_correct_breed = (results_stats_dic['n_correct_breed'] / results_stats_dic['n_dogs_img']) * 100
+        pct_correct_notdogs = (results_stats_dic['n_correct_notdogs'] / results_stats_dic['n_notdogs_img']) * 100
     else:
         pct_match, pct_correct_dogs, pct_correct_breed, pct_correct_notdogs = [0.0]*4
 
