@@ -68,23 +68,30 @@ def calculates_results_stats(results_dic):
                      and the classroom Item XX Calculating Results for details
                      on how to calculate the counts and statistics.
     """        
-    results_stats_dic = dict()
+    results_stats_dic = {
+        'n_images': 0,
+        'n_dogs_img': 0,
+        'n_notdogs_img': 0,
+        'n_match': 0,
+        'n_correct_dogs': 0,
+        'n_correct_notdogs': 0,
+        'n_correct_breed': 0
+    }
     results_stats_dic['n_images'] = len(results_dic)
     for key in results_dic:
         if results_dic[key][2] == 1:
-            results_stats_dic['n_match'] = results_stats_dic.get('n_match', 0) + 1  
+            results_stats_dic['n_match'] += 1  
         if results_dic[key][3] == 1:
-            results_stats_dic['n_dogs_img'] = results_stats_dic.get('n_dogs_img', 0) + 1
+            results_stats_dic['n_dogs_img'] += 1
         else:
-            results_stats_dic['n_notdogs_img'] = results_stats_dic.get('n_notdogs_img', 0) + 1
+            results_stats_dic['n_notdogs_img'] += 1
         if results_dic[key][3] == 1 and results_dic[key][4] == 1:
-            results_stats_dic['n_correct_dogs'] = results_stats_dic.get('n_correct_dogs', 0) + 1
+            results_stats_dic['n_correct_dogs'] += 1
         if results_dic[key][3] == 0 and results_dic[key][4] == 0:
-            results_stats_dic['n_correct_notdogs'] = results_stats_dic.get('n_correct_notdogs', 0) + 1
+            results_stats_dic['n_correct_notdogs'] += 1
         if results_dic[key][3] == 1 and results_dic[key][4] == 1 and results_dic[key][2] == 1:
-            results_stats_dic['n_correct_breed'] = results_stats_dic.get('n_correct_breed', 0) + 1
-        
-        
+            results_stats_dic['n_correct_breed'] += 1
+
     # Calculate percentages
     if len(results_dic) > 0:
         pct_match = (results_stats_dic['n_match'] / len(results_dic)) * 100
