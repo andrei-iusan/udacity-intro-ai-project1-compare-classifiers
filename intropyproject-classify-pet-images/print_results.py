@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 # */AIPND-revision/intropyproject-classify-pet-images/print_results.py
 #                                                                             
-# PROGRAMMER: 
-# DATE CREATED:
+# PROGRAMMER: Andrei Iusan
+# DATE CREATED: 2026-01-18
 # REVISED DATE: 
 # PURPOSE: Create a function print_results that prints the results statistics
 #          from the results statistics dictionary (results_stats_dic). It 
@@ -61,6 +61,34 @@ def print_results(results_dic, results_stats_dic, model,
                               False doesn't print anything(default) (bool) 
     Returns:
            None - simply printing results.
-    """    
-    None
+    """
+    # Print model architecture used
+    print("\nModel used: {}".format(model))
+
+    # Ptint data statistics
+    print("Number of Images: {}".format(results_stats_dic['n_images']))
+    print("Number of Dog Images: {}".format(results_stats_dic['n_dogs_img']))
+    print("Number of 'Not-a' Dog Images: {}".format(results_stats_dic['n_notdogs_img']))
+
+    # Print results statistics
+    print("\nStatistics:")
+    for key, value in results_stats_dic.items():
+        if key.startswith("pct"):
+            print("  {}: {:.2f}%".format(key, value))
+        else:
+            print("  {}: {}".format(key, value))
+
+    # Print incorrectly classified dogs if requested
+    if print_incorrect_dogs:
+        print("\nIncorrectly Classified Dogs:")
+        for key, value in results_dic.items():
+            if value[3] == 1 and value[4] == 0:
+                print("  {} - Pet Label: {}, Classifier Label: {}".format(key, value[0], value[1]))
+
+    # Print incorrectly classified breeds if requested
+    if print_incorrect_breed:
+        print("\nIncorrectly Classified Breeds:")
+        for key, value in results_dic.items():
+            if value[3] == 1 and value[4] == 1 and value[2] == 0:
+                print("  {} - Pet Label: {}, Classifier Label: {}".format(key, value[0], value[1]))
                 
