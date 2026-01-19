@@ -84,7 +84,9 @@ def print_results(results_dic, results_stats_dic, model,
         for key, value in results_dic.items():
             if value[3] == 1 and value[4] == 0:
                 print("  {} - Pet Label: {}, Classifier Label: {}".format(key, value[0], value[1]))
-
+            elif value[3] == 0 and value[4] == 1:
+                print("  {} - Pet Label: {}, Classifier Label: {}".format(key, value[0], value[1]))
+                
     # Print incorrectly classified breeds if requested
     if print_incorrect_breed:
         print("\nIncorrectly Classified Breeds:")
