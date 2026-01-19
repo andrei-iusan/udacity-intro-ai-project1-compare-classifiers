@@ -330,10 +330,11 @@ Statistics:
   % Correct Matches: 82.50%
 
 Incorrectly Classified Dogs:
+  cat_01.jpg - Pet Label: cat, Classifier Label: norwegian elkhound, elkhound
 
 Incorrectly Classified Breeds:
   Beagle_01170.jpg - Pet Label: beagle, Classifier Label: walker hound, walker foxhound
   Golden_retriever_05182.jpg - Pet Label: golden retriever, Classifier Label: leonberg
   Great_pyrenees_05367.jpg - Pet Label: great pyrenees, Classifier Label: kuvasz
 
-** Total Elapsed Runtime: 0:0:6
+** Total Elapsed Runtime: 0:0:4

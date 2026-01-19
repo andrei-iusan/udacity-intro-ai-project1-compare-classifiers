@@ -75,4 +75,4 @@ Incorrectly Classified Dogs:
 
 Incorrectly Classified Breeds:
 
-** Total Elapsed Runtime: 0:0:4
+** Total Elapsed Runtime: 0:0:3

@@ -335,4 +335,4 @@ Incorrectly Classified Breeds:
   Beagle_01170.jpg - Pet Label: beagle, Classifier Label: walker hound, walker foxhound
   Great_pyrenees_05367.jpg - Pet Label: great pyrenees, Classifier Label: kuvasz
 
-** Total Elapsed Runtime: 0:0:25
+** Total Elapsed Runtime: 0:0:28
